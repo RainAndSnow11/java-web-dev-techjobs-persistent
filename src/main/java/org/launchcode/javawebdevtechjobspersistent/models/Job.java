@@ -1,18 +1,22 @@
 package org.launchcode.javawebdevtechjobspersistent.models;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Job extends AbstractEntity{
 
+    @ManyToOne
+    @NotNull(message = "Employer is required.")
+    private Employer employer;
 
-    private String employer;
     private String skills;
 
     public Job() {
     }
 
-    public Job(String anEmployer, String someSkills) {
+    public Job(Employer anEmployer, String someSkills) {
         super();
         this.employer = anEmployer;
         this.skills = someSkills;
@@ -21,11 +25,11 @@ public class Job extends AbstractEntity{
     // Getters and setters.
 
 
-    public String getEmployer() {
+    public Employer getEmployer() {
         return employer;
     }
 
-    public void setEmployer(String employer) {
+    public void setEmployer(Employer employer) {
         this.employer = employer;
     }
 
