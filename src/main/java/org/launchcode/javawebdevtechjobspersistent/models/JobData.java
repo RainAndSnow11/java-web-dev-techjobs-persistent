@@ -29,10 +29,7 @@ public class JobData {
             return (ArrayList<Job>) allJobs;
         }
 
-        if (column.equals("all")){
-            results = findByValue(value, allJobs);
-            return results;
-        }
+
         for (Job job : allJobs) {
 
             String aValue = getFieldValue(job, column);

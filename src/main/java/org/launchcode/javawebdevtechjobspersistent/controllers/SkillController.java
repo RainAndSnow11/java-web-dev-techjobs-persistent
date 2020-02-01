@@ -27,11 +27,9 @@ public class SkillController {
     @PostMapping("add")
     public String processAddSkillForm(@ModelAttribute @Valid Skill newSkill,
                                          Errors errors, Model model) {
-
         if (errors.hasErrors()) {
             return "skills/add";
         }
-
         skillRepository.save(newSkill);
         return "redirect:";
     }
@@ -49,10 +47,10 @@ public class SkillController {
         Optional optionalSkill = skillRepository.findById(skillId);
         if (optionalSkill.isPresent()) {
             Skill skill = (Skill) optionalSkill.get();
-            model.addAttribute("skill", skill);
+            model.addAttribute("skills", skill);
             return "skills/view";
         } else {
-            model.addAttribute(skillRepository.findAll());
+            model.addAttribute("skills", skillRepository.findAll());
             return "redirect:../";
         }
     }
