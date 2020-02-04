@@ -47,7 +47,7 @@ public class SkillController {
         Optional optionalSkill = skillRepository.findById(skillId);
         if (optionalSkill.isPresent()) {
             Skill skill = (Skill) optionalSkill.get();
-            model.addAttribute("skills", skill);
+            model.addAttribute("skill", skill);
             return "skills/view";
         } else {
             model.addAttribute("skills", skillRepository.findAll());
