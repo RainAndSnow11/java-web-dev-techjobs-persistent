@@ -14,3 +14,8 @@ WHERE location = "St. Louis City";
 DROP TABLE techjobs.job;
 
 ## Part 4: Test it with SQL
+
+SELECT name, description
+FROM techjobs.skill
+WHERE id IN (SELECT skills_id FROM techjobs.job_skills WHERE jobs_id IS NOT NULL)
+ORDER BY name;
